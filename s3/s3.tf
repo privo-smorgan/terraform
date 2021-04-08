@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "steves_terraform_bucket" {
-  bucket = "my-tf-test-bucket"
+  bucket = "stevesterraformbucket"
   acl    = "private"
 
   tags = {
