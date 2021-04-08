@@ -1,19 +1,10 @@
-data "template_file" "init-script" {
-  template = file("scripts/init.cfg")
-  vars = {
-    REGION = var.AWS_REGION
-  }
+data "template_file" "shell-script" {
+  template = file("scripts/init.sh")
 }
 
-data "template_cloudinit_config" "cloudinit-example" {
+data "template_cloudinit_config" "SMorganEC2Bootstrap" {
   gzip          = false
   base64_encode = false
-
-  part {
-    filename     = "init.cfg"
-    content_type = "text/cloud-config"
-    content      = data.template_file.init-script.rendered
-  }
 
   part {
     content_type = "text/x-shellscript"
@@ -35,5 +26,5 @@ resource "aws_instance" "SMorganEC2Generic" {
   key_name = aws_key_pair.mykey.key_name
 
   # user data
-  user_data = data.template_cloudinit_config.cloudinit-example.rendered
+  user_data = data.template_cloudinit_config.SMorganEC2Bootstrap.rendered
 }
