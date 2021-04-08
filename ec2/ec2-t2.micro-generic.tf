@@ -1,5 +1,5 @@
 resource "aws_instance" "SMorganEC2Generic" {
-  ami           = "ami-0533f2ba8a1995cf9"
+  ami           = var.AMIS[var.AWS_REGION]
   instance_type = "t2.micro"
   
 

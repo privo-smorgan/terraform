@@ -8,6 +8,3 @@ resource "aws_s3_bucket" "steves_terraform_bucket" {
   }
 }
 
-variable "BUCKETNAME" {
-  default = "steves-s3-bucket-321abc"
-}
