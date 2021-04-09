@@ -17,10 +17,7 @@ resource "aws_instance" "SMorganEC2Generic" {
   instance_type = "t2.micro"
   
 
-  tags = {
-    Name        = "steves_ec2"
-    Environment = "Sandbox"
-  }
+  tags = var.TAGS_EC2
 
   # the public SSH key
   key_name = aws_key_pair.mykey.key_name
